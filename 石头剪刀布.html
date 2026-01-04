@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>石头剪刀布游戏</title>
+</head>
+<body style="text-align: center; font-family: sans-serif;">
+    <h1>石头剪刀布</h1>
+    <button onclick="play('石头')">✊ 石头</button>
+    <button onclick="play('剪刀')">✌️ 剪刀</button>
+    <button onclick="play('布')">✋ 布</button>
+    <h2 id="result">选一个开始战斗！</h2>
+
+    <script>
+        function play(playerChoice) {
+            const choices = ['石头', '剪刀', '布'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+            let result = "";
+
+            if (playerChoice === computerChoice) {
+                result = "平局！";
+            } else if (
+                (playerChoice === '石头' && computerChoice === '剪刀') ||
+                (playerChoice === '剪刀' && computerChoice === '布') ||
+                (playerChoice === '布' && computerChoice === '石头')
+            ) {
+                result = "你赢了！🏆";
+            } else {
+                result = "你输了...🤖";
+            }
+            document.getElementById('result').innerText = 
+                `你出：${playerChoice}，电脑出：${computerChoice}。${result}`;
+        }
+    </script>
+</body>
+</html>
